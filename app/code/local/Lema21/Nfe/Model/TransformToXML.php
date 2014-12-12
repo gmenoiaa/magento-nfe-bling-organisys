@@ -156,7 +156,7 @@ class Lema21_Nfe_Model_TransformToXML
 	private function _addOtherInfo()
 	{
 		$this->_xml["transporte"]["transportadora"]	= trim($this->_orderModel->getShippingDescription());
-		$this->_xml["transporte"]["servico_correios"]   = trim($this->_orderModel->getShippingDescription());
+		$this->_xml["transporte"]["servico_correios"]   = (strstr($this->_orderModel->getData('shipping_method'), 'pedroteixeira_correios_') ? trim($this->_orderModel->getData('shipping_method')) : trim($this->_orderModel->getShippingDescription()));
 		$this->_xml["vlr_frete"]     = $this->_orderModel->getShippingAmount();;
 		$this->_xml["vlr_seguro"]    = self::SECURITY_AMOUNT;
 		$this->_xml["vlr_desconto"]  =  (abs($this->_orderModel->getData("discount_amount")) > 0 ? abs($this->_orderModel->getData("discount_amount")) : self::SECURITY_AMOUNT);
