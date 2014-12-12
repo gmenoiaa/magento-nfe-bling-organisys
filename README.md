@@ -17,6 +17,6 @@ Melhorias no módulo:
 - Retirado validações desnecessárias.
 - Alteração na nomenclatura dos rótulos da guia Nf-e em produtos.
 - Adicionado tipo de integração e numero pedido loja.
+- Adição da seleção automática do serviços dos correios.
 - Adicionado validação do tipo de pessoa.
-- Inclusão de desconto total do pedido. 
-
+- Inclusão de desconto total do pedido.

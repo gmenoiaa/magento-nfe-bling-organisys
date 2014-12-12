@@ -2,17 +2,19 @@
 class Lema21_Nfe_Model_TransformToXML
 {
 
-	private $_orderModel        = null;
-	private $_xml               = "";
-	private $_stringFinalXML    = "";
-	private $_path              = "";
-	const PRODUCT_OR_SERVICE    = "P";
-	const SECURITY_AMOUNT       = 0;
-	const DISCOUNT_DEFAULT      = 0;
-	const ATTR_OPERATION_UNIT   = 'operation_unit';
-	const ATTR_OPERATION_NAME   = 'operation_name';
-	const ATTR_CODIGO_ORIGEM    = 'codigo_origem';
-	const ATTR_CODIGO_NCM       = 'codigo_ncm';
+	private $_orderModel        		= null;
+	private $_xml               		= "";
+	private $_stringFinalXML    		= "";
+	private $_path              		= "";
+	const PRODUCT_OR_SERVICE    		= "P";
+	const SECURITY_AMOUNT       		= 0;
+	const DISCOUNT_DEFAULT      		= 0;
+	const ATTR_OPERATION_UNIT   		= 'operation_unit';
+	const ATTR_OPERATION_NAME   		= 'operation_name';
+	const ATTR_CODIGO_ORIGEM    		= 'codigo_origem';
+	const ATTR_CODIGO_NCM       		= 'codigo_ncm';
+	const ATTR_CODIGO_GTIN       		= 'gtin';
+	const ATTR_CODIGO_GTIN_EMBALAGEM	= 'gtin_embalagem';
 	
 	/**
 	 * Construction function
@@ -140,7 +142,9 @@ class Lema21_Nfe_Model_TransformToXML
 					"peso_bruto" => $item->getWeight(),
 					"peso_liq"  => $item->getWeight(),
 					"class_fiscal" => $_product->getData(Lema21_Nfe_Model_TransformToXML::ATTR_CODIGO_NCM),
-					"origem"    => $_product->getData( Lema21_Nfe_Model_TransformToXML::ATTR_CODIGO_ORIGEM )
+					"origem"    => $_product->getData( Lema21_Nfe_Model_TransformToXML::ATTR_CODIGO_ORIGEM ),
+					"gtin" => $_product->getData(Lema21_Nfe_Model_TransformToXML::ATTR_CODIGO_GTIN),
+					"gtinEmbalagem" => $_product->getData(Lema21_Nfe_Model_TransformToXML::ATTR_CODIGO_GTIN_EMBALAGEM)
 				);
 
 			$cont++;
@@ -151,6 +155,8 @@ class Lema21_Nfe_Model_TransformToXML
 
 	private function _addOtherInfo()
 	{
+		$this->_xml["transporte"]["transportadora"]	= trim($this->_orderModel->getShippingDescription());
+		$this->_xml["transporte"]["servico_correios"]   = trim($this->_orderModel->getShippingDescription());
 		$this->_xml["vlr_frete"]     = $this->_orderModel->getShippingAmount();;
 		$this->_xml["vlr_seguro"]    = self::SECURITY_AMOUNT;
 		$this->_xml["vlr_desconto"]  =  (abs($this->_orderModel->getData("discount_amount")) > 0 ? abs($this->_orderModel->getData("discount_amount")) : self::SECURITY_AMOUNT);
@@ -192,7 +198,12 @@ class Lema21_Nfe_Model_TransformToXML
 			    "vlr_desconto"    => null,
 			    "numero_loja"    => null,
 			    "obs"             => null,
-			    "obs_internas"    => null
+			    "obs_internas"    => null,
+			    "transporte" =>
+			    	array(
+            				"transportadora" => null,
+            				"servico_correios" => null
+        			)
 			);
 
 		return $template;
