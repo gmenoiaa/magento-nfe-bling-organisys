@@ -18,7 +18,8 @@ class Lema21_Nfe_Model_Lib_ConnectBling
           'method' => 'POST',
           'content' => $this->_getData($data)
           ));
-
+        
+        
         if ($optionalHeaders !== null) {
             $params['http']['header'] = $optionalHeaders;
         }
@@ -37,7 +38,7 @@ class Lema21_Nfe_Model_Lib_ConnectBling
 
     private function _getData($data)
     {
-        return "retornaNumeroNota=S&apiKey=" . 
+        return "retorno=xml&apiKey=" . 
         Mage::getStoreConfig(
             'nfe/general/chave_acesso_bing'
         ) . "&pedidoXML=" . $data;
