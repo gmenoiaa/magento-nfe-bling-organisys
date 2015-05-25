@@ -1,8 +1,8 @@
 Módulo desenvolvido pela Lema21 para integrar com o sistema do Bling e gerar notas fiscais.
 
-Para o funcionamento do módulo é preciso criar os seguintes atributos de produto na munheca (sim, nao está automatizado a criacao dos atributos)
+Após a instalação do módulo, serão criados os seguintes atributos de produto:
 
-- codigo_origem (codigo de origem do produto)
+- codigo_origem (codigo de origem do produto). Ex: 0, 1, 2, etc.
 - opertion_name (espécie de 'nome operacional' do produto)
 - operation_unit - unidade de medida, se é "PÇ", "KG"
 - codigo_ncm - Código NCM do produto
