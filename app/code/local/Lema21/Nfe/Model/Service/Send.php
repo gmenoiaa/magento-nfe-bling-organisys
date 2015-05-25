@@ -42,7 +42,8 @@ class Lema21_Nfe_Model_Service_Send
 
     private function _saveNfe($response)
     {
-        if ( strlen( $response ) > 30 ) {
+    	// Retorno máx, para retorno com código de rastreamento.
+    	if ( strlen( $response ) > 181 ) {
             return array( Lema21_Nfe_Helper_Data::ERROR_MESSAGE  => "Erro ao persistir nota {$this->_orderModel->getData('increment_id')} [$response]"."<br/>" );
         } else {
             // save nfe_number in order
