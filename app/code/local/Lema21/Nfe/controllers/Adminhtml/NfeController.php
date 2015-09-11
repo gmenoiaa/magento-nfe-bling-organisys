@@ -58,4 +58,8 @@ extends Mage_Adminhtml_Controller_Action
     		Mage::getSingleton('adminhtml/session')->addError( $errorMessage );
     	}
     }
+    
+    protected function _isAllowed() {
+    	return Mage::getSingleton('admin/session')->isAllowed('nfe');
+    }
 }
