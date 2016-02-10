@@ -1,0 +1,11 @@
+{
+    "name": "lema21/nfe",
+    "type": "magento-module",
+    "authors": [
+        {
+            "name": "Geiser",
+            "email": "gmenoiaa@gmail.com"
+        }
+    ],
+    "require": {}
+}

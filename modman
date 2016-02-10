@@ -1,0 +1,4 @@
+app/code/local/Lema21/Nfe                           app/code/local/Lema21/Nfe                          
+app/design/adminhtml/default/default/layout/nfe.xml app/design/adminhtml/default/default/layout/nfe.xml
+app/design/adminhtml/default/default/template/nfe   app/design/adminhtml/default/default/template/nfe  
+app/etc/modules/Lema21_Nfe.xml                      app/etc/modules/Lema21_Nfe.xml                     
