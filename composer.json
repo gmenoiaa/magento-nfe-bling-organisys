@@ -7,5 +7,7 @@
             "email": "gmenoiaa@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+    	"magento-hackathon/magento-composer-installer":"*"
+    }
 }
